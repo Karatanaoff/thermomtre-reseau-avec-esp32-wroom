@@ -32,3 +32,42 @@ Lors de la première installation, la compilation complète du système par un s
 Une fois la carte connectée au réseau, elle est automatiquement détectée par l'extension ESPHome de Home Assistant. 
 
 Voici le code YAML complet et optimisé qui fonctionne. Il intègre le module `logger:` (pour voir ce qu'il se passe), la recherche du capteur sur le **GPIO5**, et une **actualisation fluide toutes les 5 secondes** :
+
+```yaml
+esphome:
+  name: esphome-web-4d7564
+  friendly_name: thermo-final
+  min_version: 2026.4.0
+  name_add_mac_suffix: false
+
+esp32:
+  variant: esp32
+  framework:
+    type: esp-idf
+
+# Active le journal de bord à l'écran (indispensable pour le diagnostic)
+logger:
+
+# Autorise la communication avec Home Assistant
+api:
+
+# Permet les futures mises à jour sans fil à travers les airs
+ota:
+  - platform: esphome
+
+# Connexion Wi-Fi (gérée de manière sécurisée par les secrets HA)
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+# Configuration du bus de communication Dallas sur la broche 5
+one_wire:
+  - platform: gpio
+    pin: 5
+
+# Déclaration et personnalisation du thermomètre
+sensor:
+  - platform: dallas_temp
+    name: "Temperature"
+    update_interval: 5s
+
