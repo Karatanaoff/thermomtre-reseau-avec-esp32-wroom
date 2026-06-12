@@ -7,7 +7,7 @@ Ce guide complet regroupe toutes les étapes, les prérequis, les configurations
 ## 📋 1. Prérequis Obligatoires
 
 ### 🖥️ Logiciels
-* **Un serveur (Home Assistant)[https://github.com/Karatanaoff/Home-Assistant]** fonctionnel (installé sur Proxmox, Raspberry Pi, etc.).
+* **Un serveur [Home Assistant](https://github.com/Karatanaoff/Home-Assistant)** fonctionnel (installé sur Proxmox, Raspberry Pi, etc.).
 * **L'add-on ESPHome** installé et configuré dans Home Assistant.
 * Un navigateur web moderne basé sur Chromium (Google Chrome, Microsoft Edge) pour le flashage initial par câble.
 
