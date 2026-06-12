@@ -118,11 +118,6 @@ Une fois la mise à jour sans fil terminée, le capteur commence à transmettre 
 2. Dans l'onglet **Intégrations**, localisez le bloc bleu **ESPHome** (il doit indiquer "1 appareil"). Cliquez dessus.
 3. Cliquez sur l'appareil nommé `esphome-web-4d7564` (ou `thermo-final`).
 4. Dans l'encadré **Capteurs**, vous devez voir votre entité **Temperature** afficher sa valeur en direct (ex: `20,1 °C`).
-5. **Pour l'afficher sur l'accueil :** *Ne passez pas par le bouton "Ajouter au tableau de bord" de cette fiche si le menu déroulant bugge.*
-    * Allez directement sur l'onglet **Aperçu** (votre accueil général).
-    * Cliquez sur l'icône **petit crayon** en haut à droite (Modifier le tableau de bord).
-    * Cliquez sur **+ AJOUTER UNE CARTE**, choisissez **Jauge** ou **Entité**, puis sélectionnez l'entité `sensor.temperature`.
-    * Cliquez sur **Enregistrer** puis sur **Terminé**.
 
 ---
 
