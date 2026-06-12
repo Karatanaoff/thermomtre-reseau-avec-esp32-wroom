@@ -1,4 +1,4 @@
-readme_content = """# 🌡️ Thermomètre Connecté DIY - ESP32 WROOM & DS18B20
+# 🌡️ Thermomètre Connecté DIY - ESP32 WROOM & DS18B20
 
 Ce guide complet retrace toutes les étapes, les pièges évités et la configuration finale pour créer un thermomètre connecté en Wi-Fi à l'aide d'un **ESP32 WROOM 32**, d'une sonde de température **Dallas DS18B20**, et du système **ESPHome / Home Assistant**.
 
