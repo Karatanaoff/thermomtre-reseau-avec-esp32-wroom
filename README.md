@@ -99,3 +99,38 @@ sensor:
   - platform: dallas_temp
     name: "Temperature"
     update_interval: 5s  # Actualisation rapide toutes les 5 secondes
+```
+
+### 🔁 Comment installer ce code sans câble ?
+
+1. Cliquez sur **SAVE** en haut à droite de l'éditeur.
+2. Cliquez sur **INSTALL**.
+3. Sélectionnez **Wirelessly (Over-The-Air)**. 
+    * *Comme le système de base est déjà présent dans l'ESP32, le serveur ne compilera que vos lignes de code personnalisées. L'envoi se fait par Wi-Fi en moins de 30 secondes !*
+
+---
+
+## 📊 6. Étape 3 : Intégration et Affichage dans Home Assistant
+
+Une fois la mise à jour sans fil terminée, le capteur commence à transmettre ses mesures.
+
+1. Allez dans **Paramètres** > **Appareils et services** de Home Assistant.
+2. Dans l'onglet **Intégrations**, localisez le bloc bleu **ESPHome** (il doit indiquer "1 appareil"). Cliquez dessus.
+3. Cliquez sur l'appareil nommé `esphome-web-4d7564` (ou `thermo-final`).
+4. Dans l'encadré **Capteurs**, vous devez voir votre entité **Temperature** afficher sa valeur en direct (ex: `20,1 °C`).
+5. **Pour l'afficher sur l'accueil :** *Ne passez pas par le bouton "Ajouter au tableau de bord" de cette fiche si le menu déroulant bugge.*
+    * Allez directement sur l'onglet **Aperçu** (votre accueil général).
+    * Cliquez sur l'icône **petit crayon** en haut à droite (Modifier le tableau de bord).
+    * Cliquez sur **+ AJOUTER UNE CARTE**, choisissez **Jauge** ou **Entité**, puis sélectionnez l'entité `sensor.temperature`.
+    * Cliquez sur **Enregistrer** puis sur **Terminé**.
+
+---
+
+## 🧠 7. Retour d'Expérience & Journal des Erreurs Évitées
+
+Au cours de ce projet, nous avons résolu plusieurs problèmes classiques de la domotique DIY :
+
+* **L'erreur des logs vides (Écran noir) :** Si l'interface de téléversement n'affiche rien après le démarrage de la puce, c'est qu'il manque la commande `logger:` dans le fichier YAML. Sans elle, l'ESP32 exécute son code mais reste muet.
+* **L'erreur `Found no devices! / Unable to select an address` :** Ce message jaune dans les logs signifie que l'ESP32 cherche dans le vide. Dans notre cas, le code cherchait sur la broche 4 (`pin: 4`) alors que le fil de données était physiquement branché sur la broche 5 (`pin: 5`). La correction dans le YAML a instantanément activé la sonde.
+* **Le temps de rafraîchissement trop long :** Par défaut, ESPHome n'interroge les sondes Dallas que toutes les 60 secondes. L'ajout du paramètre `update_interval: 5s` force une lecture toutes les 5 secondes, ce qui offre une réactivité parfaite pour tester le capteur en soufflant dessus.
+* *⚠️ Rappel de sécurité : Ne descendez jamais en dessous de `2s` pour l'intervalle de mise à jour. Le DS18B20 prend physiquement environ 0,75 seconde pour convertir sa mesure analogique en données numériques. Une interrogation trop rapide ferait planter le composant.*
