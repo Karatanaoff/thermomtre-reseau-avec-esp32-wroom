@@ -37,13 +37,7 @@ Avant d'écrire le code de la carte, il faut enregistrer vos accès Wi-Fi de man
 
 1.  Dans Home Assistant, allez dans l'onglet **ESPHome Builder**.
 2.  En haut à droite de l'écran, cliquez sur le bouton **SECRETS**.
-3.  Ajoutez ou complétez le fichier avec vos identifiants (respectez bien la casse) :
-
-
-```yaml
-    wifi_ssid: "LE_NOM_DE_VOTRE_BOX"
-    wifi_password: "VOTRE_MOT_DE_PASSE_WIFI"
-    ```
+3.  Ajoutez ou complétez le fichier avec vos identifiants
 4.  Cliquez sur **Save** pour enregistrer.
 
 ---
